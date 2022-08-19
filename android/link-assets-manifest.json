@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Gotham-Bold.otf",
+      "sha1": "5963224900d40f243ab3c8ec35f21adfbb60cf1d"
+    },
+    {
+      "path": "src/assets/fonts/Gotham-Light.otf",
+      "sha1": "3abc902e40df2ec26333b919d268556bfc6cb723"
+    }
+  ]
+}

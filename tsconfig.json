@@ -1,0 +1,27 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+    /* Completeness */
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "assets/*": ["src/assets/*"],
+      "components/*": ["src/components/*"],
+      "config/*": ["src/config/*"],
+      "constants/*": ["src/constants/*"],
+      "hooks/*": ["src/hooks/*"],
+      "routes/*": ["src/routes/*"],
+      "instances/*": ["src/instances/*"],
+      "navigation/*": ["src/navigation/*"],
+      "screens/*": ["src/screens/*"],
+      "services/*": ["src/services/*"],
+      "store/*": ["src/store/*"],
+      "utils/*": ["src/utils/*"],
+      "reducers/*": ["src/reducers/*"],
+      "styles/*": ["src/styles/*"],
+    },
+    "skipLibCheck": false                                 /* Skip type checking all .d.ts files. */
+  }
+}

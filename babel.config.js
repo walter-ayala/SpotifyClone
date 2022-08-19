@@ -1,0 +1,50 @@
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+  plugins: [
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: "@env",
+        path: ".env",
+        allowUndefined: false,
+      },
+    ],
+    [
+      'module-resolver',
+      {
+        root: ['./src'],
+        extensions: [
+          '.ios.ts',
+          '.ios.js',
+          '.android.js',
+          '.android.ts',
+          '.js',
+          '.ts',
+          '.ios.tsx',
+          '.android.tsx',
+          '.tsx',
+          '.jsx',
+          '.json',
+        ],
+        alias: {
+          '@tests': ['./tests/'],
+          '@assets': './src/assets',
+          '@components': './src/components',
+          '@constants': './src/constants',
+          '@contexts': './src/contexts',
+          '@hooks': './src/hooks',
+          '@routes': './src/routes',
+          '@screens': './src/screens',
+          '@services': './src/services',
+          '@store': './src/store',
+          '@utils': './src/utils',
+          '@config': './src/config',
+          '@instances': './src/instances',
+          '@navigation': './src/navigation',
+          '@reducers': './src/reducers',
+          '@styles': './src/styles',
+        },
+      },
+    ],
+  ],
+};
