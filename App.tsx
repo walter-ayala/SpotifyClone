@@ -8,14 +8,32 @@
  * @format
  */
 
-import React from 'react'
+import React, { useRef } from 'react'
 import RNBootSplash from "react-native-bootsplash"
-import InitialConfig from 'screens/InitialConfig'
+import { Provider } from 'react-redux'
+import { persistor, store } from 'store'
+import { PersistGate } from 'redux-persist/integration/react'
+import { NavigationContainer } from '@react-navigation/native'
+import StackNavigator from 'navigation/StackNavigator'
 
 const App = () => {
-  RNBootSplash.hide()
+  const navigationRef = useRef(null)
+
+  const onReady = async () => {
+    RNBootSplash.hide()
+  }
+
   return (
-    <InitialConfig/>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={onReady}
+        >
+          <StackNavigator />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 
