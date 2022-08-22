@@ -36,7 +36,7 @@ const requestInterceptor = async (config: any) => {
   let authToken = auth.token
   let spotifyCredentials
 
-  if (expirationDate <= new Date()) {
+  if (new Date(expirationDate) <= new Date()) {
     spotifyCredentials = await getAuth()
   }
 

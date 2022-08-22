@@ -1,14 +1,4 @@
-import instance from "instances/instance"
-
-interface CategoriesResponse {
-  items: any[],
-  href: string,
-  limit: number,
-  next: string,
-  offset: number,
-  previous: string,
-  total: number,
-}
+import instance from 'instances/instance'
 
 const getCategories = async () => {
   try {
