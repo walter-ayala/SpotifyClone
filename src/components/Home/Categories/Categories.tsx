@@ -8,6 +8,7 @@ import {
 import colors from 'styles/colors'
 import CategoryItem from './CategoryItem'
 import useCategories from 'hooks/useCategories'
+import RowSkeleton from 'components/Skeletons/RowSkeleton'
 
 const Categories = () => {
   const { categories, loading } = useCategories()
@@ -17,6 +18,15 @@ const Categories = () => {
   const renderItem = useCallback(({ item }: any) => (
     <CategoryItem data={item} />
   ), [])
+
+  if (loading) {
+    return (
+      <View>
+        <Text style={styles.title}>Categorías</Text>
+        <RowSkeleton/>
+      </View>
+    )
+  }
 
   return (
     <View>

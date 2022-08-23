@@ -1,6 +1,7 @@
 
 import React, { useCallback } from 'react'
 import {
+  ActivityIndicator,
   FlatList,
   StyleSheet,
   Text,
@@ -21,6 +22,15 @@ const LastAlbums = () => {
   const renderItem = useCallback(({ item }: any) => (
     <AlbumItem data={item} />
   ), [])
+
+  if (loading) {
+    return (
+      <View>
+        <Text style={styles.title}>Últimos Álbumes</Text>
+        <ActivityIndicator color={colors.BLUE} size="large"/>
+      </View>
+    )
+  }
 
   return (
     <View>

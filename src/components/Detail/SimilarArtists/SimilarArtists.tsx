@@ -9,6 +9,7 @@ import colors from 'styles/colors'
 import { useRoute } from '@react-navigation/native'
 import SimilarArtistsItem from './SimilarArtistsItem'
 import useArtistsRelatedArtists from 'hooks/useArtistsRelatedArtists'
+import RowSkeleton from 'components/Skeletons/RowSkeleton'
 
 const SimilarArtists = () => {
   const route: any = useRoute()
@@ -19,6 +20,15 @@ const SimilarArtists = () => {
   const renderItem = useCallback(({ item }: any) => (
     <SimilarArtistsItem data={item} />
   ), [])
+
+  if (loading) {
+    return (
+      <View>
+        <Text style={styles.title}>Artistas Similares</Text>
+        <RowSkeleton/>
+      </View>
+    )
+  }
 
   return (
     <View>

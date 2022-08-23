@@ -8,6 +8,7 @@ import {
 import colors from 'styles/colors'
 import useRecommendations from 'hooks/useRecommendations'
 import TracksRecommendedItem from './TracksRecommendedItem'
+import ListTrackSkeleton from 'components/Skeletons/ListTrackSkeleton'
 
 const TracksRecommended = () => {
   const { tracks, loading } = useRecommendations()
@@ -17,6 +18,15 @@ const TracksRecommended = () => {
   const renderItem = useCallback(({ item }: any) => (
     <TracksRecommendedItem data={item} />
   ), [])
+
+  if (loading) {
+    return (
+      <View>
+        <Text style={styles.title}>Canciones Recomendadas</Text>
+        <ListTrackSkeleton/>
+      </View>
+    )
+  }
 
   return (
     <View>

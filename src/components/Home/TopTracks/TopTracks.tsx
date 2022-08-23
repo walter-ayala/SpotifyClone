@@ -8,6 +8,7 @@ import {
 import colors from 'styles/colors'
 import useTopTracks from 'hooks/useTopTracks'
 import TopTracksItem from './TopTracksItem'
+import RowSkeleton from 'components/Skeletons/RowSkeleton'
 
 const TopTracks = () => {
   const { tracks, loading } = useTopTracks()
@@ -17,6 +18,15 @@ const TopTracks = () => {
   const renderItem = useCallback(({ item }: any) => (
     <TopTracksItem data={item.track} />
   ), [])
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Lo Más Escuchado</Text>
+        <RowSkeleton/>
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>

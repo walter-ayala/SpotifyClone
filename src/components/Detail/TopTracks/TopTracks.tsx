@@ -9,6 +9,7 @@ import colors from 'styles/colors'
 import useArtistsTopTracks from 'hooks/useArtistsTopTracks'
 import { useRoute } from '@react-navigation/native'
 import TracksRecommendedItem from 'components/Home/TracksRecommended/TracksRecommendedItem'
+import ListTrackSkeleton from 'components/Skeletons/ListTrackSkeleton'
 
 const TopTracks = () => {
   const route: any = useRoute()
@@ -19,6 +20,15 @@ const TopTracks = () => {
   const renderItem = useCallback(({ item }: any) => (
     <TracksRecommendedItem data={item} />
   ), [])
+
+  if (loading) {
+    return (
+      <View>
+        <Text style={styles.title}>Top Tracks</Text>
+        <ListTrackSkeleton/>
+      </View>
+    )
+  }
 
   return (
     <View>

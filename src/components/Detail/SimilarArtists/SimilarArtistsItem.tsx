@@ -9,7 +9,7 @@ const SimilarArtistsItem = ({ data }: any) => {
     <View style={styles.container}>
       <Image
         style={styles.artistImage}
-        source={{ uri: images[0].url }}
+        source={{ uri: images[0]?.url }}
         resizeMode="stretch"
       />
       <Text style={styles.artistName} numberOfLines={2}>{name}</Text>
