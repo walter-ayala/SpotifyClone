@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native'
+import colors from 'styles/colors'
 
 const CategoryItem = ({ data }: any) => {
   const { name, icons } = data
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Gotham-Bold',
     position: 'absolute',
     top: 70,
-    color: 'white',
+    color: colors.WHITE,
     alignSelf: 'center',
     fontSize: 14,
   },

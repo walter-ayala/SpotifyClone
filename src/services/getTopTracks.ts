@@ -2,7 +2,7 @@ import instance from 'instances/instance'
 
 const getTopTracks = async () => {
   try {
-    const response = await instance.get('playlists/1sAVKbeZfl9IjAST4MNnYb')
+    const response = await instance.get('playlists/37i9dQZEVXbMDoHDwVN2tF')
     return response.data.tracks.items
   }
   catch (error:any) {

@@ -13,7 +13,7 @@ const useArtistsRelatedArtists = (artist: string) => {
         setArtists(response)
       })
       .finally(() => setLoading(false))
-  }, [])
+  }, [artist])
 
   return { artists, loading }
 }

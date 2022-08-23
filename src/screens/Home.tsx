@@ -1,25 +1,27 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native'
 import TopTracks from 'components/Home/TopTracks/TopTracks'
 import Categories from 'components/Home/Categories/Categories'
 import TracksRecommended from 'components/Home/TracksRecommended/TracksRecommended'
+import colors from 'styles/colors'
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Categories />
-      <TopTracks/>
-      <TracksRecommended/>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Categories />
+        <TopTracks />
+        <TracksRecommended />
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.WHITE,
     paddingLeft: 29,
-    paddingTop: 14,
   },
 })
 

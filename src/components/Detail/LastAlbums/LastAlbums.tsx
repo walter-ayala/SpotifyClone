@@ -1,3 +1,4 @@
+
 import React, { useCallback } from 'react'
 import {
   FlatList,
@@ -6,27 +7,29 @@ import {
   View,
 } from 'react-native'
 import colors from 'styles/colors'
-import CategoryItem from './CategoryItem'
-import useCategories from 'hooks/useCategories'
+import AlbumItem from './AlbumItem'
+import { useRoute } from '@react-navigation/native'
+import useArtistsAlbums from 'hooks/useArtistsAlbums'
 
-const Categories = () => {
-  const { categories, loading } = useCategories()
+const LastAlbums = () => {
+  const route: any = useRoute()
+
+  const { albums, loading } = useArtistsAlbums(route.params.detail.album.artists[0].id)
 
   const keyExtractor = useCallback(({ id }: any) => id.toString(), [])
 
   const renderItem = useCallback(({ item }: any) => (
-    <CategoryItem data={item} />
+    <AlbumItem data={item} />
   ), [])
 
   return (
     <View>
-      <Text style={styles.title}>Categorías</Text>
+      <Text style={styles.title}>Últimos Álbumes</Text>
       <FlatList
         keyExtractor={keyExtractor}
-        data={categories}
-        bounces={false}
-        horizontal
-        showsHorizontalScrollIndicator={false}
+        numColumns={2}
+        data={albums}
+        contentContainerStyle={styles.contentContainerStyle}
         renderItem={renderItem}
       />
     </View>
@@ -40,6 +43,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginTop: 14,
   },
+  contentContainerStyle: {
+    width: '100%',
+  },
 })
 
-export default Categories
+export default LastAlbums

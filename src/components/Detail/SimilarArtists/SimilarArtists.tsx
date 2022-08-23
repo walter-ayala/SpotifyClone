@@ -6,24 +6,26 @@ import {
   View,
 } from 'react-native'
 import colors from 'styles/colors'
-import CategoryItem from './CategoryItem'
-import useCategories from 'hooks/useCategories'
+import { useRoute } from '@react-navigation/native'
+import SimilarArtistsItem from './SimilarArtistsItem'
+import useArtistsRelatedArtists from 'hooks/useArtistsRelatedArtists'
 
-const Categories = () => {
-  const { categories, loading } = useCategories()
+const SimilarArtists = () => {
+  const route: any = useRoute()
+  const { artists, loading } = useArtistsRelatedArtists(route.params.detail.album.artists[0].id)
 
   const keyExtractor = useCallback(({ id }: any) => id.toString(), [])
 
   const renderItem = useCallback(({ item }: any) => (
-    <CategoryItem data={item} />
+    <SimilarArtistsItem data={item} />
   ), [])
 
   return (
     <View>
-      <Text style={styles.title}>Categorías</Text>
+      <Text style={styles.title}>Artistas Similares</Text>
       <FlatList
         keyExtractor={keyExtractor}
-        data={categories}
+        data={artists}
         bounces={false}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -42,4 +44,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Categories
+export default SimilarArtists

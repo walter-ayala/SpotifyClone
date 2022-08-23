@@ -3,11 +3,16 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 import colors from 'styles/colors'
+import { useNavigation } from '@react-navigation/native'
+import millisToMinutesAndSeconds from 'utils/millisToMinutes'
+
 
 const TracksRecommendedItem = ({ data }: any) => {
+  const { navigate } = useNavigation()
   const {
     name,
     artists,
@@ -16,7 +21,7 @@ const TracksRecommendedItem = ({ data }: any) => {
   } = data
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.container} onPress={() => navigate("Detail", { detail: data, artist: artists[0], image: album.images[0] })}>
       <Image
         style={styles.trackImage}
         source={{ uri: album.images[0].url }}
@@ -26,7 +31,8 @@ const TracksRecommendedItem = ({ data }: any) => {
         <Text style={styles.trackTitle} numberOfLines={1}>{name}</Text>
         <Text style={styles.artistsTitle}>{artists[0].name}</Text>
       </View>
-    </View>
+      <Text style={[styles.duration, styles.artistsTitle]}>{millisToMinutesAndSeconds(duration_ms)}</Text>
+    </TouchableOpacity>
   )
 }
 
@@ -38,13 +44,12 @@ const styles = StyleSheet.create({
   informationContainer: {
     marginHorizontal: 13,
     justifyContent: 'center',
+    width: '60%',
   },
   trackTitle: {
     fontFamily: 'Gotham-Bold',
     color: colors.BLUE,
-    alignSelf: 'center',
     fontSize: 14,
-    marginRight: 15,
   },
   trackImage: {
     width: 44,
@@ -55,6 +60,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: colors.GRAY,
     fontFamily: 'Gotham-Light',
+  },
+  duration: {
+    alignSelf: 'center',
   },
 })
 

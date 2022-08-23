@@ -13,7 +13,7 @@ const useArtistsTopTracks = (artist: string) => {
         setTracks(response)
       })
       .finally(() => setLoading(false))
-  }, [])
+  }, [artist])
 
   return { tracks, loading }
 }

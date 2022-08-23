@@ -1,17 +1,19 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import {
   Image,
   StyleSheet,
   Text,
-  View,
+  TouchableOpacity,
 } from 'react-native'
 import colors from 'styles/colors'
 
 const TopTracksItem = ({ data }: any) => {
+  const { navigate } = useNavigation()
   const { name, album, artists } = data
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.container} onPress={() => navigate("Detail", { detail: data, artist: artists[0], image: album.images[0] })}>
       <Image
         style={styles.trackImage}
         source={{ uri: album.images[0].url }}
@@ -19,7 +21,7 @@ const TopTracksItem = ({ data }: any) => {
       />
       <Text style={styles.trackTitle} numberOfLines={1}>{name}</Text>
       <Text style={styles.artistsTitle} numberOfLines={1}>{artists[0].name}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
