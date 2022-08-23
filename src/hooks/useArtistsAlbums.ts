@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getArtistsAlbums, getArtistsTopTracks } from 'services'
+import { getArtistsAlbums } from 'services'
 
 const useArtistsAlbums = (artist: string) => {
   const [albums, setAlbums] = useState<Array<any>>([])
@@ -13,7 +13,7 @@ const useArtistsAlbums = (artist: string) => {
         setAlbums(response)
       })
       .finally(() => setLoading(false))
-  }, [])
+  }, [artist])
 
   return { albums, loading }
 }
